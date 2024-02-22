@@ -12,4 +12,4 @@ Support for both local and remote Jupyter Python Environments, as long as they a
 -   Open the `Jupyter` view in the Activity Bar
 -   The Python Environment associated with the Python Kernel will be displayed under `Remote Python Environments`
 
-<img src=https://raw.githubusercontent.com/DonJayamanne/vscode-python-kernel-environment-manager/main/resources/demo.png>
+![](/resources/demo.png)
