@@ -1,4 +1,4 @@
-# Python (Notebook) Kernel Environment Manager for Visual Studio Code
+# Python (Notebook) Kernel Environment Manager
 
 A [Visual Studio Code](https://code.visualstudio.com/) [extension](https://marketplace.visualstudio.com/VSCode) with support for managing the Python Environment associated with the Python Kernel running in a Jupyter Notebook. Features include, updating, installing, uninstalling packages, viewing details of the Python environment and the like.
 Support for both local and remote Jupyter Python Environments, as long as they are used to execute code in a Jupyter Notebook.
