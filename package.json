@@ -170,7 +170,7 @@
         "@typescript-eslint/eslint-plugin": "^7.0.1",
         "@typescript-eslint/parser": "^7.0.1",
         "@vscode/dts": "^0.4.0",
-        "@vscode/jupyter-extension": "^1.1.0",
+        "@vscode/jupyter-extension": "^1.1.1",
         "@vscode/l10n-dev": "^0.0.33",
         "colors": "^1.4.0",
         "concurrently": "^8.2.2",
