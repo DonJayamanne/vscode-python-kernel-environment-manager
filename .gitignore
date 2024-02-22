@@ -1,0 +1,11 @@
+.DS_Store
+.huskyrc.json
+**/node_modules
+*.pyc
+*.vsix
+vscode.d.ts
+.vscode-test
+**/.vscode-test/**
+**/.venv*/
+dist/**
+out/**

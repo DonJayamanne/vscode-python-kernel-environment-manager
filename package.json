@@ -1,0 +1,189 @@
+{
+    "name": "python-kernel-env-manager",
+    "displayName": "Python Kernel Environment Manager",
+    "description": "View and manage the Python environment associated with a Python Kernel in a Notebook",
+    "version": "2.0.0",
+    "capabilities": {},
+    "publisher": "donjayamanne",
+    "author": {
+        "name": "Don Jayamanne"
+    },
+    "license": "MIT",
+    "homepage": "https://github.com/DonJayamanne/vscode-python-kernel-env-manager",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/DonJayamanne/vscode-python-kernel-env-manager"
+    },
+    "bugs": {
+        "url": "https://github.com/DonJayamanne/vscode-python-kernel-env-manager/issues"
+    },
+    "qna": "https://github.com/DonJayamanne/vscode-python-kernel-env-manager/issues",
+    "icon": "icon.png",
+    "galleryBanner": {
+        "color": "#1e415e",
+        "theme": "dark"
+    },
+    "engines": {
+        "vscode": "^1.87.0"
+    },
+    "enableTelemetry": false,
+    "keywords": [
+        "python",
+        "jupyter",
+        "notebook"
+    ],
+    "categories": [
+        "Programming Languages",
+        "Notebooks"
+    ],
+    "activationEvents": [
+        "onNotebook:jupyter-notebook",
+        "onNotebook:interactive"
+    ],
+    "main": "./dist/extension.node",
+    "browser": "./dist/extension.web.js",
+    "l10n": "./l10n",
+    "contributes": {
+        "walkthroughs": [],
+        "commands": [
+            {
+                "command": "python.remoteEnvManager.updatePackage",
+                "title": "%python.remoteEnvManager.updatePackage.title%",
+                "icon": "$(cloud-download)"
+            },
+            {
+                "command": "python.remoteEnvManager.searchAndInstallPackage",
+                "title": "%python.remoteEnvManager.searchAndInstallPackage.title%",
+                "icon": "$(search)"
+            },
+            {
+                "command": "python.remoteEnvManager.uninstallPackage",
+                "title": "%python.remoteEnvManager.uninstallPackage.title%",
+                "icon": "$(trash)"
+            },
+            {
+                "command": "python.remoteEnvManager.refreshPackages",
+                "title": "%python.remoteEnvManager.refreshPackages.title%",
+                "icon": "$(refresh)"
+            },
+            {
+                "command": "python.remoteEnvManager.refresh",
+                "title": "%python.remoteEnvManager.refresh.title%",
+                "icon": "$(refresh)"
+            },
+            {
+                "command": "python.remoteEnvManager.updateAllPackages",
+                "title": "%python.remoteEnvManager.updateAllPackages.title%",
+                "icon": "$(cloud-download)"
+            },
+            {
+                "command": "python.remoteEnvManager.exportEnvironment",
+                "title": "%python.remoteEnvManager.exportEnvironment.title%",
+                "icon": "$(export)"
+            },
+            {
+                "command": "python.remoteEnvManager.refreshOutdatedPackages",
+                "title": "%python.remoteEnvManager.refreshOutdatedPackages.title%",
+                "icon": "$(sync)"
+            }
+        ],
+        "menus": {
+            "commandPalette": [],
+            "view/title": [
+                {
+                    "command": "python.remoteEnvManager.refresh",
+                    "when": "view == remoteKernelEnvironments && !isRefreshingKernels",
+                    "group": "navigation"
+                }
+            ],
+            "view/item/context": [
+                {
+                    "command": "python.remoteEnvManager.updatePackage",
+                    "when": "view == remoteKernelEnvironments && viewItem =~ /^package:outdated/",
+                    "group": "inline@3"
+                },
+                {
+                    "command": "python.remoteEnvManager.searchAndInstallPackage",
+                    "when": "false && view == remoteKernelEnvironments && viewItem =~ /^packageContainer/",
+                    "group": "inline@1"
+                },
+                {
+                    "command": "python.remoteEnvManager.exportEnvironment",
+                    "when": "view == remoteKernelEnvironments && viewItem =~ /^env:/ && viewItem =~ /:hasSysPrefix/",
+                    "group": "inline@4"
+                },
+                {
+                    "command": "python.remoteEnvManager.uninstallPackage",
+                    "when": "view == remoteKernelEnvironments && viewItem =~ /^package:/",
+                    "group": "inline@3"
+                },
+                {
+                    "command": "python.remoteEnvManager.refreshPackages",
+                    "when": "view == remoteKernelEnvironments && viewItem =~ /^packageContainer/",
+                    "group": "inline@2"
+                },
+                {
+                    "command": "python.remoteEnvManager.refreshOutdatedPackages",
+                    "when": "view == remoteKernelEnvironments && viewItem =~ /^packageContainer/",
+                    "group": "inline@2"
+                },
+                {
+                    "command": "python.remoteEnvManager.updateAllPackages",
+                    "when": "view == remoteKernelEnvironments && viewItem =~ /^packageContainer/",
+                    "group": "inline@3"
+                }
+            ]
+        },
+        "viewsWelcome": [
+            {
+                "view": "remoteKernelEnvironments",
+                "contents": "No Python Kernels loaded. Open/create a Jupyter Notebook and run some code against a Python Kernel.\n[Create a new Jupyter Notebook](command:ipynb.newUntitledIpynb)"
+            }
+        ],
+        "views": {
+            "jupyter": [
+                {
+                    "id": "remoteKernelEnvironments",
+                    "name": "%views.remoteKernelEnvironments.name%",
+                    "icon": "resources/logo.svg",
+                    "contextualTitle": "%views.remoteKernelEnvironments.contextualTitle%"
+                }
+            ]
+        }
+    },
+    "scripts": {
+        "package": "vsce package -o ms-python-kernel-environment-manager.vsix",
+        "prepackage": "npm run localize && npm run compile",
+        "postinstall": "npm run download-api",
+        "download-api": "npx vscode-dts 1.86.0",
+        "compile": "npx tsx build/esbuild/build.ts",
+        "watch": "npx tsx build/esbuild/build.ts --watch",
+        "localize": "npx @vscode/l10n-dev export -o ./l10n ./src",
+        "lint": "eslint --ext .ts,.js src build",
+        "lint-fix": "eslint --fix --ext .ts,.js src build",
+        "format-check": "prettier --check 'src/**/*.ts' 'build/**/*.js' '.github/**/*.yml'",
+        "format-fix": "prettier --write 'src/**/*.ts' 'build/**/*.js' '.github/**/*.yml'"
+    },
+    "devDependencies": {
+        "@types/colors": "^1.2.1",
+        "@types/node": "^18.15.0",
+        "@typescript-eslint/eslint-plugin": "^7.0.1",
+        "@typescript-eslint/parser": "^7.0.1",
+        "@vscode/dts": "^0.4.0",
+        "@vscode/jupyter-extension": "^1.1.0",
+        "@vscode/l10n-dev": "^0.0.33",
+        "colors": "^1.4.0",
+        "concurrently": "^8.2.2",
+        "esbuild": "^0.20.0",
+        "eslint": "^8.56.0",
+        "eslint-config-airbnb": "^19.0.4",
+        "eslint-config-prettier": "^9.1.0",
+        "eslint-plugin-import": "^2.29.1",
+        "eslint-plugin-jsx-a11y": "^6.8.0",
+        "eslint-plugin-react": "^7.33.2",
+        "eslint-plugin-react-hooks": "^4.6.0",
+        "sinon": "^17.0.1",
+        "tsx": "^4.7.1",
+        "typescript": "^5.3.3"
+    }
+}

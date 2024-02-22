@@ -1,0 +1,18 @@
+{
+  "Python Kernel Environment Manager": "Python Kernel Environment Manager",
+  "Latest Version": "Latest Version",
+  "Name": "Name",
+  "Version": "Version",
+  "Architecture": "Architecture",
+  "Executable": "Executable",
+  "SysPrefix": "SysPrefix",
+  "Folder": "Folder",
+  "Are you sure you want to update all the packages?": "Are you sure you want to update all the packages?",
+  "Yes": "Yes",
+  "No": "No",
+  "Are you sure you want to update the package '{0} to the latest version {1}?": "Are you sure you want to update the package '{0} to the latest version {1}?",
+  "Are you sure you want to uninstall the package '{0}'?": "Are you sure you want to uninstall the package '{0}'?",
+  "Info": "Info",
+  "Packages": "Packages",
+  "Enter package name to search": "Enter package name to search"
+}

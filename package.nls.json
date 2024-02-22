@@ -1,0 +1,13 @@
+{
+    "python.remoteEnvManager.updatePackage.title": "Update Package",
+    "python.remoteEnvManager.searchAndInstallPackage.title": "Install Package",
+    "python.remoteEnvManager.uninstallPackage.title": "Uninstall Package",
+    "python.remoteEnvManager.refresh": "Refresh",
+    "python.remoteEnvManager.refreshPackages.title": "Refresh",
+    "python.remoteEnvManager.refreshOutdatedPackages.title": "Find Outdated Packages",
+    "python.remoteEnvManager.refreshOutdatedPackages.cancel.title": "Cancel Finding Outdated Packages",
+    "python.remoteEnvManager.updateAllPackages.title": "Update All Packages",
+    "python.remoteEnvManager.exportEnvironment.title": "Export Environment",
+    "views.remoteKernelEnvironments.name": "Remote Python Environments",
+    "views.remoteKernelEnvironments.contextualTitle": "Remote Python Environments"
+}

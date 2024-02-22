@@ -1,0 +1,39 @@
+// A launch configuration that compiles the extension and then opens it inside a new window
+{
+    "version": "0.1.0",
+    "configurations": [
+        {
+            "args": ["--extensionDevelopmentPath=${workspaceFolder}"],
+            "name": "Launch Extension",
+            "outFiles": ["${workspaceFolder}/dist/**/*.js"],
+            // "preLaunchTask": "Compile",
+            "request": "launch",
+            "type": "extensionHost"
+        },
+        {
+            "name": "Extension (web)",
+            "type": "extensionHost",
+            "debugWebWorkerHost": true,
+            "request": "launch",
+            "args": ["--extensionDevelopmentPath=${workspaceFolder}", "--extensionDevelopmentKind=web"],
+            "outFiles": ["${workspaceFolder}/dist/**/*", "!${workspaceFolder}/**/node_modules**/*"],
+            "preLaunchTask": "Compile",
+            "presentation": {
+                "group": "1_extension",
+                "order": 1
+            }
+        },
+        {
+            "name": "Extension (web with daemon compilation)",
+            "type": "extensionHost",
+            "debugWebWorkerHost": false,
+            "request": "launch",
+            "args": ["--extensionDevelopmentPath=${workspaceFolder}", "--extensionDevelopmentKind=web"],
+            "outFiles": ["${workspaceFolder}/dist/**/*", "!${workspaceFolder}/**/node_modules**/*"],
+            "presentation": {
+                "group": "1_extension",
+                "order": 1
+            }
+        }
+    ]
+}
