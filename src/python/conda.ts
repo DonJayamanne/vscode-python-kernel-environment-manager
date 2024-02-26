@@ -46,7 +46,7 @@ function getCondaExecutor(env: RemoteEnvironment) {
         const token = new CancellationTokenSource();
         if (commandsRequiringPrefix.includes(args[0])) {
             if (env.env.executable.sysPrefix) {
-                args.push('--prefix', env.env.executable.sysPrefix);
+                args.push('--prefix', env.env.executable.sysPrefix.replaceAll('\\', '\\\\'));
             } else {
                 traceWarn(`Conda environment does not have a sysPrefix`, env.env.id);
             }

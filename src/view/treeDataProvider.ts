@@ -57,7 +57,7 @@ export class RemoteKernelsTreeDataProvider implements TreeDataProvider<TreeNode>
                     l10n.t('Yes'),
                     l10n.t('No'),
                 );
-                if (yes === l10n.t('No')) {
+                if (yes !== l10n.t('Yes')) {
                     return;
                 }
 
@@ -94,7 +94,7 @@ export class RemoteKernelsTreeDataProvider implements TreeDataProvider<TreeNode>
                     l10n.t('Yes'),
                     l10n.t('No'),
                 );
-                if (yes === l10n.t('No')) {
+                if (yes !== l10n.t('Yes')) {
                     return;
                 }
 
@@ -116,7 +116,7 @@ export class RemoteKernelsTreeDataProvider implements TreeDataProvider<TreeNode>
                     l10n.t('Yes'),
                     l10n.t('No'),
                 );
-                if (yes === l10n.t('No')) {
+                if (yes !== l10n.t('Yes')) {
                     return;
                 }
 
